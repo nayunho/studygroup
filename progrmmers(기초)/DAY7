@@ -1,0 +1,106 @@
+/* 수열과 구간 쿼리 4 */
+class Solution {
+    public int[] solution(int[] arr, int[][] queries) {
+        
+        for(int i=0;i<queries.length;i++){
+            int s=queries[i][0];
+            int e=queries[i][1];
+            int k=queries[i][2];
+            for(int j=s;j<=e;j++){
+                if(j%k==0){
+                    arr[j]=arr[j]+1;
+                }
+            }
+        }
+        return arr;
+    }
+}
+
+/* 배열 만들기 2 */
+
+import java.util.*;
+
+class Solution {
+    public List solution(int l, int r) {
+        List answer = new ArrayList();
+        int cnt;
+        for(int i=l;i<=r;i++){
+            cnt=0;
+            if(i%5==0){
+                String str = i+"";
+                for(int j=0;j<str.length();j++){
+                    if(str.charAt(j) =='5' || str.charAt(j)=='0'){
+                        cnt++;
+                    }
+                }
+                if(cnt == str.length()){
+                    answer.add(i);
+                }
+            }
+        }
+        if(answer.size()==0){
+            answer.add(-1);
+        }
+        return answer;
+    }
+}
+
+/* 카운트 업 */
+
+class Solution {
+    public int[] solution(int start_num, int end_num) {
+        int[] answer = new int[(end_num)-(start_num)+1];
+        
+        for(int i=start_num;i<=end_num;i++){
+            answer[i-start_num]=i;
+        }
+        return answer;
+    }
+}
+
+/* 콜라츠 수열 만들기 */
+import java.util.*;
+
+class Solution {
+    public List solution(int n) {
+        List answer = new ArrayList();
+       
+        while(n!=1){
+            answer.add(n);
+            if(n%2==0){
+                n=n/2;
+            }else{
+                n=3*n+1;
+            }
+        }
+        answer.add(n);
+        
+        return answer;
+    }
+}
+
+/* 배열 만들기 4 */
+import java.util.*;
+
+class Solution {
+    public List solution(int[] arr) {
+        List<Integer> stk = new ArrayList();
+        int cnt=0;
+        for(int i=0;i<arr.length;i++){
+            if(stk.isEmpty()){
+                stk.add(arr[i]);
+
+            }else if((int)stk.get(stk.size()-1)<arr[i]){
+                 stk.add(arr[i]);
+
+            }else if((int)stk.get(stk.size()-1)>=arr[i]){
+                /* remove쓸때는 while문으로 사용해서 판단해야함 빈배열일떄 삭제할수도 있어서 */
+                while(!stk.isEmpty() && stk.get(stk.size() - 1) >= arr[i]) {
+                    stk.remove(stk.size() - 1);
+                }
+                stk.add(arr[i]);
+            }
+        }
+        return stk;
+    }
+}
