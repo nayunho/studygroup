@@ -1,4 +1,4 @@
-package test.copy;
+package test;
 
 public interface Shape {
 	
