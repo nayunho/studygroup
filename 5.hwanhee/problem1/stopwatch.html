@@ -1,0 +1,76 @@
+<!--
+=================================================
+*스톱워치 만들기*
+setInterval(), clearInterval(), innerText 사용~
+js04_function/js11_clock.html에 zeroFill 참고~
+=================================================
+-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="stopWatch">00:00.00</div>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+    <script>
+        let timerStart;
+        let mm = 0;
+        let ss = 0;
+        let ms = 0;
+        const stopWatch = document.getElementById('stopWatch');
+        function start() {
+            timerStart=setInterval(()=>{
+                ms=parseInt(ms)+10;
+                if(ms===1000){
+                    ss++;
+                    ms=0;
+                    ss=zeroFill(ss);
+                    if(ss===60){
+                        mm++;
+                        ss=0;
+                        mm=zeroFill(mm);
+                    }
+                }
+                if(ss===0){
+                    ss=zeroFill(ss);
+                }else if(mm===0){
+                    mm=zeroFill(mm);
+                }
+                stopWatch.innerText=`${mm}:${ss}.${ms}`;
+            },10)
+        }
+
+        function stop() {
+            clearInterval(timerStart);
+            
+        }
+
+        function reset() {
+            clearInterval(timerStart);
+            mm=0;
+            ss=0;
+            ms=0;
+            mm=zeroFill(mm);
+            ss=zeroFill(ss);
+            ms=zeroFill(ms);
+            stopWatch.innerText=`${mm}:${ss}.${ms}`;
+            
+        }
+        function zeroFill(num){
+            if(num<10){
+                return num="0"+num;
+            }else{
+                return num;
+            }
+        }
+</script>
+</body>
+
+</html>
