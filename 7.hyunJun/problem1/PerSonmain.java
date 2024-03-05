@@ -6,21 +6,19 @@ public class PerSonmain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		List<Person> list = new ArrayList<Person>();
-		Person person=new Person();
-		while(true) {
+		Person person;
+		exit:while(true) {
+			person=new Person();
 			System.out.println("1>정보추가 / 2>정보삭제 / 3>전체정보 보기 / etc>종료");
 			int tmp = sc.nextInt();
 			switch(tmp) {
 			case 1:
 				System.out.print("이름 입력:");
 				person.setName(sc.next());
-				System.out.println();
 				System.out.print("나이 입력:");
 				person.setAge(sc.nextInt());
-				System.out.println();
 				System.out.print("전화번호 입력:");
 				person.setTel(sc.next());
-				System.out.println();
 				list.add(person);
 				break;
 			case 2:
@@ -33,15 +31,16 @@ public class PerSonmain {
 				}
 			case 3:
 				for(int i=0;i<list.size();i++) {
-					System.out.printf("[이름 : %s / 나이 : %d / 전화번호 : %s]",list.get(i).getName(),list.get(i).getAge(),list.get(i).getTel());
+					System.out.printf("[이름 : %s / 나이 : %d / 전화번호 : %s]\n",list.get(i).getName(),list.get(i).getAge(),list.get(i).getTel());
 				}
 				break;
 			default:
 				System.out.println("프로그램 종료");
+				break exit;
 			}
 			
-				
 
 		}
 	}
+
 }
