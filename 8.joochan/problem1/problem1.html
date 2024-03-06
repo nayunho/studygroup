@@ -17,9 +17,8 @@
         // 학생 목록에서 성적이 80점 이상인 학생들의 목록을 필터링하는 function을 작성해 콘솔로 출력ㄴ
         function filterHighScorers(students) {
             for (let i = 0; i < students.length; i++) {
-
-                let arr = students[i].split(" ");
-                let score=arr[1].split("점");
+                let arr = students[i].split(' ');
+                let score=arr[1].split('점');
                 if (parseInt(score[0]) >= 80) {
                         console.log("이름은" + arr[0] + "이고 성적은" + score[0] + "입니다.");
                 }
