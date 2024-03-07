@@ -14,8 +14,8 @@ public class CorrectNumber {
 
 		Scanner sc = new Scanner(System.in);
 		int reuslt= (int) ((Math.random()*6)+1);
-		System.out.println("주사위 맞추기 게임");
-		System.out.println("주사위를 던집니다. ");
+		System.out.println('주사위 맞추기 게임');
+		System.out.println('주사위를 던집니다.');
 		while(true) {
 			System.out.println("1이상 6 이하의 정수를 입력하세요\n =>");
 			int cnt=sc.nextInt();
