@@ -1,0 +1,59 @@
+Session을 이용해 이름을 입력받아 환영문구를 출력하는 코드입니다
+
+index.jsp: (welcome.jsp로 사용자 이름 전달)
+welcome.jsp : "반갑습니다(입력받은이름)님" 출력 else "이름을 입력받지 못했습니다" 출력 
+
+두개의 파일을 만들고 빈칸(???)을 채워주세요
+
+
+
+( 풀이 )
+
+/////////////////////welcome.jsp파일
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <% 
+        request.setCharacterEncoding("UTF-8");
+    
+        String name = request.getParameter("name");
+        if (name != null && !name.isEmpty()) { //이름 입력칸이 비어있지 않다는 조건
+            session.setAttribute("name", name);
+            %>
+            <h2>반갑습니다, <%= name %>님</h2>
+            <% 
+        } else {
+            %>
+            <h3>이름을 입력받지 못했습니다</h3>
+            <%
+        }
+    %>
+</body>
+</html>
+
+//////////////////////////index.jsp파일 
+
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="welcome.jsp" method="post">
+        이름을 입려해주세요: <input type="text"  name="name">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
